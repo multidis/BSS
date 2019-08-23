@@ -1,0 +1,26 @@
+\inputencoding{utf8}
+\HeaderA{bssAlphaFit}{Estimating the smoothness parameter of a Brownian semistationary process}{bssAlphaFit}
+%
+\begin{Description}\relax
+\code{bssAlphaFit} uses the 'Change of Frequency' method to estimate the smoothness parameter, \code{alpha},
+of a BSS process. The COF method needs only minimal assumptions on the parametric form of the kernel,
+therefore the estimate can be used in any kernel.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+bssAlphaFit(Y, p = 2)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{Y}] a vector of observations of a BSS process at any frequency.
+
+\item[\code{p}] the power to be used in the change of frequency method. The default value is p = 2.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+The function returns a single value - an estimate for the smoothness parameter alpha.
+\end{Value}
