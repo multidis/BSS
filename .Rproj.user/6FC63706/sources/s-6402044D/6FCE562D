@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590588489905.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "6FCE562D",
+    "lastKnownWriteTime" : 1590591793,
+    "last_content_update" : 1590591793393,
+    "path" : "E:/MEGA/PhD/BSS article/Code/BSS/R/bss_accumulated_volatility.R",
+    "project_path" : "R/bss_accumulated_volatility.R",
+    "properties" : {
+        "cursorPosition" : "76,0",
+        "scrollLine" : "46"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

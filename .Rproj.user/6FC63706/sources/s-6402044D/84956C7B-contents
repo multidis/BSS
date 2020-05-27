@@ -1,0 +1,54 @@
+bssAlphaFit <- function(Y, p = 2) {
+  
+  n <- length(Y)
+  filter1 <- 0:((n-1)/2)*2 + 1
+  filter2 <- 1:(n/2)*2
+  
+  Y1 <- Y[filter1]
+  Y2 <- Y[filter2]
+  
+  V <- sum((diff(diff(Y1)))^p) + sum((diff(diff(Y2)))^p)
+  
+  cof <- V / sum((diff(diff(Y)))^p)
+  
+  log2(cof) / p - 1/2
+  
+}
+
+
+
+bssAlphaFit2 <- function(Y, p = 2) {
+  
+  V <- function(Y, p, v) {
+    n <- length(Y)
+    filter1 <- 0:((n-1)/v)*v + 1
+    filter2 <- 1:(n/v)*v
+    
+    Y1 <- Y[filter1]
+    Y2 <- Y[filter2]
+    sum((diff(diff(Y1)))^p) + sum((diff(diff(Y2)))^p)
+    
+  }
+  
+  COF <- function(X, p) {
+    
+    V(Y, p, 2) / sum((diff(diff(Y)))^p)
+    
+  }
+  
+  h_p <- function(x, p) log2(x) / p - 1/2
+  
+  h_p(COF(Y, p), p)
+  
+}
+
+
+
+
+
+
+
+y = rnorm(n = 1000, 0, 1)
+
+bssAlphaFit(y)
+bssAlphaFit2(y)

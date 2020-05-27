@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590591804507.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BA94885E",
+    "lastKnownWriteTime" : 1590592380,
+    "last_content_update" : 1590592380922,
+    "path" : "E:/MEGA/PhD/BSS article/Code/BSS/R/bss_fit.R",
+    "project_path" : "R/bss_fit.R",
+    "properties" : {
+        "cursorPosition" : "140,35",
+        "scrollLine" : "117"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
