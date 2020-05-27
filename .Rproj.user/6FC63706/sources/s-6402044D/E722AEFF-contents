@@ -1,6 +1,0 @@
-realisedPowerVariation <- function(Y, p) {
-  
-  return (sum(abs(diff(Y))^p))
-  
-}
-
