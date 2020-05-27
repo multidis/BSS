@@ -4,8 +4,15 @@
 \alias{gammaKernelBSS}
 \title{Simulation of gamma kernel Brownian semistationary processes}
 \usage{
-gammaKernelBSS(N, n, T, kappa = 3, alpha, lambda, sigma = rep(1, N + n
-  * T + 1))
+gammaKernelBSS(
+  N,
+  n,
+  T,
+  kappa = 3,
+  alpha,
+  lambda,
+  sigma = rep(1, N + n * T + 1)
+)
 }
 \arguments{
 \item{N}{positive integer determining the number of terms in the Riemman sum element of the

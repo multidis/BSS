@@ -4,8 +4,13 @@
 \alias{estimateAccumulatedVolatility}
 \title{Estimate accumulated volatility processes}
 \usage{
-estimateAccumulatedVolatility(Y, n, p = 2, method = "nonparametric",
-  kernel = "gamma")
+estimateAccumulatedVolatility(
+  Y,
+  n,
+  p = 2,
+  method = "nonparametric",
+  kernel = "gamma"
+)
 }
 \arguments{
 \item{Y}{a vector of observations of a BSS process.}

@@ -4,8 +4,7 @@
 \alias{powerKernelBSS}
 \title{Simulation of power law kernel Brownian semistationary processes}
 \usage{
-powerKernelBSS(N, n, T, kappa, alpha, beta, sigma = rep(1, N + n * T +
-  1))
+powerKernelBSS(N, n, T, kappa, alpha, beta, sigma = rep(1, N + n * T + 1))
 }
 \arguments{
 \item{N}{positive integer determining the number of terms in the Riemman sum element of the
