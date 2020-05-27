@@ -263,7 +263,7 @@ powerKernelBSS <- function(N, n, T, kappa, alpha, beta, sigma = rep(1, N + n*T +
     Y <- Y_lower + convolve( g_b_star, rev(head(sigma,-1) * W[,1]), type = 'open')[N:(N+n*T)]
   }
   # return Gaussian core, BSS sample path and volatility process for [0,T]
-  list(core = X, bss = Y, vol = tail(sigma, n*T + 1)
+  list(core = X, bss = Y, vol = tail(sigma, n*T + 1))
 }
 
 

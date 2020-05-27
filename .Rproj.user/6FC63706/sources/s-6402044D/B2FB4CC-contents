@@ -1,0 +1,77 @@
+powerKernelBSS <- function(N, n, T, kappa, alpha, beta, sigma = rep(1, N + n*T + 1)) {
+  
+  ## initialise kernel and discretization parameters:
+  
+  # create empty vectors for the 'lower' part of the hybrid scheme sums
+  X_lower <- numeric(n*T + 1)
+  Y_lower <- numeric(n*T + 1)
+  
+  # define gamma kernel
+  g <- function(x) x^alpha * (1 + x)^(beta - alpha)
+  
+  # split indices into lower and upper sums
+  k_lower <- 1:kappa
+  k_upper <- (kappa + 1):N
+  
+  # function to calculate the optimal discretization
+  b_star <- function(k) ((k^(alpha + 1) - (k-1)^(alpha + 1))/(alpha + 1))^(1/alpha)
+  
+  # vector of the L_g(k/n)
+  L_g <- (1 + k_lower/n)^(beta - alpha)
+  
+  # vector of g(b*/n) for hybrid scheme
+  g_b_star <- c(rep(0, kappa), g(b_star(k_upper)/n))
+  
+  ## generate the Brownian increments according to hybrid scheme
+  
+  # create the required covariance matrix
+  Sigma_W <- hybridSchemeCovarianceMatrix(kappa, n, alpha)
+  
+  # sample N + n*T random variables from this multivariate Gaussian
+  W <- MASS::mvrnorm(N + n*T, mu = rep(0,kappa + 1), Sigma = Sigma_W)
+  
+  ## create the sample hybrid scheme and Riemann sum sample paths
+  # split into cases as when kappa = 1, we are dealing with a scalar not a matrix in the first sum
+  if (kappa == 1) {
+    # loop over each time i/n with i = 0, ..., n*T
+    for (i in 1:(n*T + 1)) {
+      # calculate X[i] = X(i-1/n) from hybrid scheme
+      # sum first kappa terms and remaining N - kappa terms separately
+      
+      # generate the Gaussian core element
+      X_lower[i] <- sum( L_g  * W[(i + N - kappa):(i+N-1), 2])
+      
+      # generate the BSS sample path element
+      Y_lower[i] <- sum( L_g  * sigma[(i + N - kappa):(i+N-1)] * W[(i + N - kappa):(i+N-1), 2])
+    }
+    
+    # add the 'upper' term using the convolution
+    
+    # Gaussian core, convolve on with Brownian increments
+    X <- X_lower + convolve( g_b_star, rev(W[,1]), type = 'open')[N:(N+n*T)]
+    
+    # BSS sample path, convolve with volatility process * Brownian increments
+    Y <- Y_lower + convolve( g_b_star, rev(head(sigma,-1) * W[,1]), type = 'open')[N:(N+n*T)]
+  } else { # if kappa > 1
+    # loop over each time i/n with i = 0, ..., n*T
+    for (i in 1:(n*T + 1)) {
+      # sum first kappa terms and remaining N - kappa terms separately
+      
+      # for the Gaussian core
+      X_lower[i] <- sum( L_g  * diag(W[(i + N - kappa):(i+N-1), 2:(kappa + 1)][kappa:1, 1:kappa]))
+      
+      # for the BSS sample path
+      Y_lower[i] <- sum( L_g  * sigma[(i + N - kappa):(i+N-1)] * diag(W[(i + N - kappa):(i+N-1), 2:(kappa + 1)][kappa:1, 1:kappa]))
+    }
+    
+    # Gaussian core, convolve on with Brownian increments
+    X <- X_lower + convolve( g_b_star, rev(W[,1]), type = 'open')[N:(N+n*T)]
+    
+    # BSS sample path, convolve with volatility process * Brownian increments
+    Y <- Y_lower + convolve( g_b_star, rev(head(sigma,-1) * W[,1]), type = 'open')[N:(N+n*T)]
+  }
+  # return Gaussian core, BSS sample path and volatility process for [0,T]
+  list(core = X, bss = Y, vol = tail(sigma, n*T + 1)
+}
+
+
