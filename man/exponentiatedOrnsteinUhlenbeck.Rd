@@ -25,3 +25,14 @@ The function returns a vector of length \code{N + n*T + 1}
 \code{exponentiatedOrnsteinUhlenbeck} simulates an exponentiated Ornstein-Uhlenbeckprocess of the correct length to
 be used as the volatility process within the hybrid scheme.
 }
+\examples{
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta <- 0.125
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+
+}

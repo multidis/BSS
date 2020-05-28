@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1609932057",
+    "hash" : "0",
     "id" : "831F27D2",
-    "lastKnownWriteTime" : 1590662232,
-    "last_content_update" : 1590662232634,
+    "lastKnownWriteTime" : 1590668494,
+    "last_content_update" : 1590668494968,
     "path" : "E:/MEGA/PhD/BSS article/Code/BSS/R/bss_accumulated_volatility.R",
     "project_path" : "R/bss_accumulated_volatility.R",
     "properties" : {
-        "cursorPosition" : "40,5",
-        "scrollLine" : "18"
+        "cursorPosition" : "28,0",
+        "scrollLine" : "16"
     },
     "relative_order" : 1,
     "source_on_save" : false,

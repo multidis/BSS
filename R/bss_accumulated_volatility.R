@@ -24,6 +24,26 @@
 #' estimator for tau_n is used then the values will be scaled by the expectation of the squared volatility, as
 #' per the theory.
 #'
+#' @examples
+#'
+#' N <- 10000
+#' n <- 100
+#' T <- 1.0
+#' theta <- 0.5
+#' beta <- 0.125
+#'
+#' kappa <- 3
+#' alpha <- -0.2
+#' lambda <- 1.0
+#'
+#'
+#' vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+#' bss_simulation <- gammaKernelBSS(N, n, T, kappa, alpha, lambda, sigma = vol)
+#' y <- bss_simulation$bss
+#' estimateAccumulatedVolatility(y, n, p = 2, method = 'nonparametric', kernel = 'gamma')
+#'
+#' #'
+#'
 #' @export
 #'
 estimateAccumulatedVolatility <- function(Y, n, p = 2, method = 'nonparametric', kernel = 'gamma') {

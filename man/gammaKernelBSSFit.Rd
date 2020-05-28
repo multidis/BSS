@@ -24,3 +24,24 @@ by minimising the mean square error between the true gamma kernel autocorrelatio
 empirical ACF of the data, using lags 0,...,H. The number of lags \code{num_lags} used can be adjusted.
 The volatility process does not need to be specified.
 }
+\examples{
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta <- 0.125
+
+kappa <- 3
+alpha <- -0.2
+lambda <- 1.0
+
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+bss_simulation <- gammaKernelBSS(N, n, T, kappa, alpha, lambda, sigma = vol)
+y <- bss_simulation$bss
+
+gammaKernelBSSFit(y, n, num_lags = 10)
+
+
+}

@@ -1,0 +1,5 @@
+testthat::test_that("correlation is one at zero lag", {
+
+  expect_equal(powerKernelCorrelation(0, 1, 0), 1)
+
+})

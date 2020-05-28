@@ -1,0 +1,6 @@
+alpha <- -0.1
+lambda <- 1
+h <- 0
+
+ifelse(h == 0, 1,
+       2^(-alpha + 1/2) / gamma( alpha + 1/2) * (lambda * h)^(alpha + 1/2) * besselK(lambda*h, nu = alpha + 1/2))

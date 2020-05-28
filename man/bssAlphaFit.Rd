@@ -19,3 +19,23 @@ The function returns a single value - an estimate for the smoothness parameter a
 of a BSS process. The COF method needs only minimal assumptions on the parametric form of the kernel,
 therefore the estimate can be used in any kernel.
 }
+\examples{
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta <- 0.125
+
+kappa <- 3
+alpha <- -0.2
+lambda <- 1.0
+
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+bss_simulation <- gammaKernelBSS(N, n, T, kappa, alpha, lambda, sigma = vol)
+y <- bss_simulation$bss
+
+bssAlphaFit(y, p = 2)
+
+}

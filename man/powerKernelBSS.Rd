@@ -34,3 +34,22 @@ and \code{vol} gives the volatilty process over the same time period.
 power law kernel. It simulates a path where the volatility process is independent of the driving Brownian motion of the
 BSS process.
 }
+\examples{
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta_vol <- 0.125
+
+kappa <- 3
+alpha <- -0.2
+beta_pwr <- -1.0
+
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta_vol)
+bss_simulation <- powerKernelBSS(N, n, T, kappa, alpha, beta_pwr, sigma = vol)
+
+
+
+}

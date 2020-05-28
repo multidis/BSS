@@ -21,3 +21,13 @@ The dimensions of the covariance matrix will be (kappa + 1) by (kappa + 1).
 Generates the covariance matrix used in simulating Brownian semistationary processes by
 the hybrid scheme.
 }
+\examples{
+
+kappa <- 3
+n <- 100
+alpha <- -0.2
+
+hybridSchemeCovarianceMatrix(kappa, n, alpha)
+
+
+}

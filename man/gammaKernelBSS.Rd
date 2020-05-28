@@ -36,6 +36,20 @@ Gaussian core is simulated.}
 The function returns a list of three objects, \code{core} gives the Gaussian core of the process
 between 0 and T, at intervals of 1/n. \code{bss} gives the BSS sample path on the between 0 and T, at intervals of 1/n,
 and \code{vol} gives the volatilty process over the same time period.
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta <- 0.125
+
+kappa <- 3
+alpha <- -0.2
+lambda <- 1.0
+
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+bss_simulation <- gammaKernelBSS(N, n, T, kappa, alpha, lambda, sigma = vol)
 }
 \description{
 \code{gammaKernelBSS} uses the Hybrid scheme to simulate a Brownian semistationary process from the

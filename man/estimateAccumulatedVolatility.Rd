@@ -42,3 +42,24 @@ per the theory.
 semistationary process, using either parametric methods of model fitting first, or using a non-parametric
 estimator for the scale factor.
 }
+\examples{
+
+N <- 10000
+n <- 100
+T <- 1.0
+theta <- 0.5
+beta <- 0.125
+
+kappa <- 3
+alpha <- -0.2
+lambda <- 1.0
+
+
+vol <- exponentiatedOrnsteinUhlenbeck(N, n, T, theta, beta)
+bss_simulation <- gammaKernelBSS(N, n, T, kappa, alpha, lambda, sigma = vol)
+y <- bss_simulation$bss
+estimateAccumulatedVolatility(y, n, p = 2, method = 'nonparametric', kernel = 'gamma')
+
+#'
+
+}
