@@ -1,3 +1,0 @@
-exportPattern("^[[:alpha:]]+")
-importFrom("stats", "acf", "convolve", "integrate", "optim", "rnorm")
-importFrom("utils", "head", "tail")
