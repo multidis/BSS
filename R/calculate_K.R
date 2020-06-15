@@ -1,3 +1,5 @@
+#' Caclulate the coefficients a_1 in the expression for K_1
+#' @param n an integer
 #' @keywords internal
 a1Coefficients <- function(n) {
   if (n %% 2 == 0) {
@@ -12,6 +14,8 @@ a1Coefficients <- function(n) {
   }
 }
 
+#' Caclulate the coefficients a_3 in the expression for K_3
+#' @param n an integer
 #' @keywords internal
 a3Coefficients <- function(n) {
   if (n %% 2 == 0) {
@@ -28,9 +32,14 @@ a3Coefficients <- function(n) {
   }
 }
 
+#' Caclulate the correlation of a fractional Gaussian - needed in the calculation of K
+#' @param j an integer
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 rhoFractionGaussian <- function(j, alpha) 1/2 * ( (j+1)^(2*alpha + 1) - 2*j^(2*alpha + 1) + (j-1)^(2*alpha + 1) )
 
+#' Caclulate K_1 for a BSS process
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 calculateK1 <- function(alpha) {
 
@@ -44,6 +53,8 @@ calculateK1 <- function(alpha) {
   sqrt(summation)
 }
 
+#' Caclulate K_2 for a BSS process
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 calculateK2 <- function(alpha) {
 
@@ -51,6 +62,8 @@ calculateK2 <- function(alpha) {
 
 }
 
+#' Caclulate K_3 for a BSS process
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 calculateK3 <- function(alpha) {
 
@@ -65,6 +78,8 @@ calculateK3 <- function(alpha) {
   sqrt(summation)
 }
 
+#' Caclulate K_4 for a BSS process
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 calculateK4 <- function(alpha) {
 
@@ -72,6 +87,9 @@ calculateK4 <- function(alpha) {
 
 }
 
+#' Caclulate K_p for a BSS process for a given value of p
+#' @param p an integer - the power to use for K_p
+#' @param alpha a float, the smoothness parameter of the BSS process
 #' @keywords internal
 calculateK <- function(p, alpha) {
 
@@ -81,6 +99,9 @@ calculateK <- function(p, alpha) {
 
 }
 
+#' Estimate K_p for a BSS process, for a given power p
+#' @param p an integer - the power to use for K_p
+#' @param Y a vector of observations of the BSS process
 #' @keywords internal
 estimateK <- function(Y, p) {
 

@@ -152,7 +152,7 @@ estimateAccumulatedVolatilityCI <- function(Y, n, p, method = "nonparametric", k
 
   var_term <- estimateAccumulatedVolatility(Y, n, 2*p, method = "nonparametric", kernel = "gamma")
 
-  var <- K_p * sqrt(var_term)
+  var <- z_a * K_p * sqrt(var_term)
 
   list(lower = (mean - var), upper = (mean + var))
 
